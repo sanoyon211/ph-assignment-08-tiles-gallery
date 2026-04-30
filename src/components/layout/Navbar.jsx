@@ -12,19 +12,22 @@ import {
   HiX,
 } from 'react-icons/hi';
 import { useState, useEffect } from 'react';
+
 export default function Navbar() {
   const pathname = usePathname();
   const { data: session, isPending } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // স্ক্রল ডিটেক্ট করা
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  // অ্যাক্টিভ লিঙ্ক চেক করার ফাংশন
+
   const isActive = path => pathname === path;
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -43,6 +46,7 @@ export default function Navbar() {
             Tile<span className="text-primary">Gallery</span>
           </span>
         </Link>
+
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-10 font-bold text-[11px] uppercase tracking-[0.2em]">
           <Link
@@ -66,7 +70,8 @@ export default function Navbar() {
             </Link>
           )}
         </div>
-        {/* Right Side: User & Mobile Toggle */}
+
+        {/* User Actions */}
         <div className="flex items-center gap-4">
           {isPending ? (
             <div className="skeleton w-10 h-10 rounded-2xl bg-slate-100"></div>
@@ -116,13 +121,22 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <Link
-              href="/login"
-              className="hidden md:flex btn btn-primary rounded-2xl px-10 shadow-lg shadow-primary/20 hover:scale-105 transition-all text-xs font-bold uppercase tracking-widest"
-            >
-              Login
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/login"
+                className="hidden sm:flex btn btn-ghost btn-sm rounded-xl px-5 text-xs font-bold uppercase tracking-widest text-slate-600 hover:text-primary"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="btn btn-primary btn-sm md:btn-md rounded-xl px-6 md:px-8 shadow-lg shadow-primary/20 hover:scale-105 transition-all text-xs font-bold uppercase tracking-widest"
+              >
+                Join Now
+              </Link>
+            </div>
           )}
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-3 text-slate-900 bg-slate-100 rounded-2xl hover:bg-primary hover:text-white transition-all duration-300"
@@ -132,7 +146,8 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      {/* Mobile Sidebar/Menu */}
+
+      {/* Mobile Sidebar */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-2xl p-8 flex flex-col gap-8 font-black uppercase tracking-[0.2em] text-[10px] animate__animated animate__fadeInDown">
           <Link
@@ -169,13 +184,22 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link
-              href="/login"
-              onClick={() => setIsMenuOpen(false)}
-              className="btn btn-primary rounded-2xl w-full"
-            >
-              Login Account
-            </Link>
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/login"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn btn-outline rounded-xl w-full"
+              >
+                Login
+              </Link>
+              <Link
+                href="/register"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn btn-primary rounded-xl w-full"
+              >
+                Join Now
+              </Link>
+            </div>
           )}
         </div>
       )}
