@@ -1,3 +1,7 @@
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
+
 import Link from 'next/link';
 import {
   HiOutlineArrowNarrowLeft,
@@ -5,17 +9,26 @@ import {
   HiOutlineCheckCircle,
 } from 'react-icons/hi';
 
-
-
 export default async function TileDetailsPage({ params }) {
-  const { id } = await params;
-
-  const res = await fetch('https://auth-0-kappa.vercel.app/tilesData.json', {
-    cache: 'no-store',
+  // ১. সেশন চেক লজিক (এটি যোগ করুন)
+  const session = await auth.api.getSession({
+    headers: await headers(),
   });
-  const tiles = await res.json();
-  const tile = tiles.find(t => t.id == id);
-
+  if (!session) {
+    redirect('/login');
+  }
+  const { id } = await params;
+  // ২. ফেচিং পার্ট (try-catch ব্যবহার করা ভালো)
+  let tile = null;
+  try {
+    const res = await fetch('https://auth-0-kappa.vercel.app/tilesData.json', {
+      cache: 'no-store',
+    });
+    const tiles = await res.json();
+    tile = tiles.find(t => t.id == id);
+  } catch (error) {
+    console.error('Error fetching tile data:', error);
+  }
   if (!tile) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center space-y-4">
