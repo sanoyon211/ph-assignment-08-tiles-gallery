@@ -39,8 +39,8 @@ export default async function Home() {
       {/* Featured Section */}
       <section className="py-24 px-6 md:px-12 bg-slate-50/50">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div className="space-y-4">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-16 gap-8">
+            <div className="space-y-2 md:space-y-4">
               <div className="flex items-center gap-3">
                 <div className="h-px w-10 bg-primary"></div>
                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px]">

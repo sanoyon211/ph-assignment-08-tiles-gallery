@@ -30,7 +30,7 @@ export default async function TileDetailsPage({ params }) {
   }
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-6 bg-slate-50/50">
+    <main className="min-h-screen pt-32 pb-24 px-4 md:px-8 bg-slate-50/50">
       <div className="container mx-auto">
         {/* Back Button */}
         <Link
@@ -40,7 +40,7 @@ export default async function TileDetailsPage({ params }) {
           <HiOutlineArrowNarrowLeft size={20} /> Back to Gallery
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-start">
           {/* Left: Image Section */}
           <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
             <img
@@ -51,7 +51,7 @@ export default async function TileDetailsPage({ params }) {
           </div>
 
           {/* Right: Info Section */}
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             <div className="space-y-4">
               <span className="badge badge-primary badge-outline font-black uppercase tracking-widest text-[10px] px-4 py-3">
                 {tile.category}
@@ -69,17 +69,17 @@ export default async function TileDetailsPage({ params }) {
               {tile.description}
             </p>
 
-            <div className="p-8 bg-white rounded-[2rem] shadow-sm border border-slate-100 space-y-6">
-              <div className="flex justify-between items-end">
+            <div className="p-3 md:p-8 bg-white rounded-[2rem] shadow-sm border border-slate-100 space-y-6">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 md:gap-6">
                 <div className="space-y-1">
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Premium Price
                   </p>
-                  <p className="text-5xl font-black text-slate-900">
+                  <p className="text-2xl md:text-5xl font-black text-slate-900">
                     ${tile.price}
                   </p>
                 </div>
-                <button className="btn btn-primary btn-lg rounded-2xl px-10 shadow-xl shadow-primary/30 gap-3">
+                <button className="w-full sm:w-auto btn btn-primary btn-lg rounded-2xl px-10 shadow-xl shadow-primary/30 gap-3">
                   <HiOutlineShoppingBag size={24} /> Order Now
                 </button>
               </div>
