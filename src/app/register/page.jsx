@@ -3,14 +3,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { signUp, signIn } from '@/lib/auth-client';
-import { FaGoogle, FaEnvelope, FaLock, FaUser, FaLink } from 'react-icons/fa'; // FaLink যোগ করা হয়েছে
+import { FaGoogle, FaEnvelope, FaLock, FaUser, FaLink } from 'react-icons/fa'; 
 import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [image, setImage] = useState(''); // ইমেজের জন্য স্টেট
+  const [image, setImage] = useState(''); 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -22,7 +22,7 @@ export default function RegisterPage() {
       email,
       password,
       name,
-      image, // এখানে ইমেজ লিঙ্কটি পাঠানো হচ্ছে
+      image,  
       callbackURL: '/',
     });
 

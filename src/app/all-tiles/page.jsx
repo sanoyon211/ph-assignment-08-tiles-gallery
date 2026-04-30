@@ -1,15 +1,17 @@
 import TileList from '@/components/ui/TileList';
 
-async function getAllTiles() {
-  const res = await fetch('https://auth-0-kappa.vercel.app/tilesData.json', {
-    cache: 'no-store',
-  });
-  if (!res.ok) return [];
-  return res.json();
-}
+
 
 export default async function AllTilesPage() {
-  const allTiles = await getAllTiles();
+
+  const res = await fetch(
+    'https://tiles-gallery-ph.vercel.app/tilesData.json',
+    {
+      cache: 'no-store',
+    },
+  );
+  const allTiles = await res.json();
+
 
   return (
     <main className="min-h-screen bg-slate-50/50 pt-32 pb-24 px-6">

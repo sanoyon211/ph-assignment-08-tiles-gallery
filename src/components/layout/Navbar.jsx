@@ -99,7 +99,15 @@ export default function Navbar() {
               </button>
             </div>
           ) : (
-            <div></div>
+            /* Logged Out State: Login Button */
+                <div className='hidden md:block'>
+                  <Link
+              href="/login"
+              className="btn btn-primary btn-sm rounded-xl px-8 shadow-lg shadow-primary/20 text-[10px] font-bold uppercase tracking-widest "
+            >
+              Login
+            </Link>
+            </div>
           )}
 
           {/* Mobile Menu Toggle */}

@@ -10,7 +10,7 @@ import {
 } from 'react-icons/hi';
 
 export default async function TileDetailsPage({ params }) {
-  // ১. সেশন চেক লজিক (এটি যোগ করুন)
+  
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -18,10 +18,10 @@ export default async function TileDetailsPage({ params }) {
     redirect('/login');
   }
   const { id } = await params;
-  // ২. ফেচিং পার্ট (try-catch ব্যবহার করা ভালো)
+  
   let tile = null;
   try {
-    const res = await fetch('https://auth-0-kappa.vercel.app/tilesData.json', {
+    const res = await fetch('https://tiles-gallery-ph.vercel.app/tilesData.json', {
       cache: 'no-store',
     });
     const tiles = await res.json();

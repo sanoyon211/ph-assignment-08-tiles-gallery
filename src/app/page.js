@@ -3,12 +3,13 @@ import TileCard from '@/components/ui/TileCard';
 import { HiStar } from 'react-icons/hi';
 import Link from 'next/link';
 
-
-
 export default async function Home() {
-  const res = await fetch('https://auth-0-kappa.vercel.app/tilesData.json', {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    'https://tiles-gallery-ph.vercel.app/tilesData.json',
+    {
+      cache: 'no-store',
+    },
+  );
 
   const tilesData = await res.json();
   const featuredTiles = tilesData.slice(0, 4);
@@ -27,7 +28,7 @@ export default async function Home() {
             >
               <span>Exclusive New Arrivals</span>
               <HiStar size={20} />
-              <span >Premium Artistic Collection</span>
+              <span>Premium Artistic Collection</span>
               <HiStar size={20} />
               <span>Weekly Modern Geometric Feature</span>
               <HiStar size={20} />
