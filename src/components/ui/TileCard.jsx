@@ -33,9 +33,9 @@ export default function TileCard({ tile }) {
           </div>
           <Link
             href={`/tile/${tile.id}`}
-            className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center hover:bg-primary transition-all duration-300 shadow-lg"
+            className="p-3 rounded-2xl bg-slate-900 text-white flex items-center hover:bg-primary transition-all duration-300 shadow-lg gap-1"
           >
-            <HiOutlineArrowNarrowRight size={24} />
+          View Details <HiOutlineArrowNarrowRight size={24} />
           </Link>
         </div>
       </div>
