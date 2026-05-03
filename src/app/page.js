@@ -3,6 +3,7 @@ import TileCard from '@/components/ui/TileCard';
 import { HiStar } from 'react-icons/hi';
 import Link from 'next/link';
 
+
 export default async function Home() {
   const res = await fetch(
     'https://tiles-gallery-ph.vercel.app/tilesData.json',
@@ -77,6 +78,7 @@ export default async function Home() {
           )}
         </div>
       </section>
+      
     </main>
   );
 }

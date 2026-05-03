@@ -22,18 +22,26 @@ export default function RegisterPage() {
       email,
       password,
       name,
-      image,  
+      image,
       callbackURL: '/',
     });
 
     if (error) {
-      toast.error(error.message);
+      if (error.message.includes('already exists')) {
+        toast.error('This email is already registered!');
+      } else {
+        toast.error(error.message || 'Registration failed. Please try again!');
+      }
     } else {
-      toast.success('Account created successfully!');
-      router.push('/');
+      toast.success('Account created successfully! Please login.', {
+        duration: 3000,
+        icon: '✅',
+      });
+      router.push('/login');
     }
     setLoading(false);
   };
+
 
   const handleGoogleLogin = async () => {
     await signIn.social({ provider: 'google', callbackURL: '/' });

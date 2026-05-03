@@ -14,18 +14,21 @@ export default function UpdateProfileForm({ user }) {
   const handleUpdate = async e => {
     e.preventDefault();
     setLoading(true);
-
     const { data, error } = await authClient.updateUser({
       name: name,
       image: image,
     });
-
     if (error) {
-      toast.error(error.message);
+      
+      toast.error('Failed to update profile. Please try again!');
     } else {
-      toast.success('Profile updated successfully!');
+      
+      toast.success('Profile updated successfully!', {
+        duration: 3000,
+        icon: '✅',
+      });
       router.push('/my-profile');
-      router.refresh(); // সার্ভার ডেটা আপডেট করার জন্য
+      router.refresh();
     }
     setLoading(false);
   };

@@ -12,17 +12,23 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  
   const handleLogin = async e => {
     e.preventDefault();
     setLoading(true);
     const { error } = await signIn.email({ email, password, callbackURL: '/' });
-    if (error) toast.error(error.message);
-    else {
+
+    if (error) {
+      //  Login Error
+      toast.error('Invalid email or password!');
+    } else {
+      //  Login Success
       toast.success('Welcome back!');
       router.push('/');
     }
     setLoading(false);
   };
+
 
   const handleGoogleLogin = async () => {
     await signIn.social({ provider: 'google', callbackURL: '/' });
