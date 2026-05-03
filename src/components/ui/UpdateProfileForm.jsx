@@ -74,10 +74,19 @@ export default function UpdateProfileForm({ user }) {
 
       <button
         type="submit"
-        className={`btn btn-primary w-full h-14 rounded-2xl shadow-xl shadow-primary/20 gap-3 text-lg ${loading ? 'loading' : ''}`}
+        className="btn btn-primary w-full h-14 rounded-2xl shadow-xl shadow-primary/20"
+        disabled={loading}
       >
-        {loading ? 'Updating...' : 'Update Information'}
-        {!loading && <HiOutlineSave size={22} />}
+        {loading ? (
+          <span className="flex items-center gap-3">
+            <span className="loading loading-spinner loading-sm"></span>
+            Updating...
+          </span>
+        ) : (
+          <span className="flex items-center gap-3">
+            <HiOutlineSave size={20} /> Update Information
+          </span>
+        )}
       </button>
     </form>
   );

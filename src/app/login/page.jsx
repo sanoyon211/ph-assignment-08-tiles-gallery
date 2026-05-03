@@ -71,9 +71,17 @@ export default function LoginPage() {
           </div>
           <button
             type="submit"
-            className={`btn btn-primary w-full rounded-2xl ${loading ? 'loading' : ''}`}
+            className="btn btn-primary w-full rounded-2xl h-14"
+            disabled={loading}
           >
-            Login Now
+            {loading ? (
+              <span className="flex items-center gap-3">
+                <span className="loading loading-spinner loading-sm"></span>
+                Logging in...
+              </span>
+            ) : (
+              'Login Now'
+            )}
           </button>
         </form>
 
